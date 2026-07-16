@@ -1,26 +1,167 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --font-sans: var(--font-inter), sans-serif;
+
+  --color-background: #f6f7fb;
+  --color-surface: #ffffff;
+  --color-surface-secondary: #f9fafb;
+  --color-surface-tertiary: #f2f5f7;
+  --color-surface-muted: #f4f5fb;
+
+  --color-border: #e7eaf3;
+  --color-border-light: #e5e7eb;
+  --color-border-muted: #dfe1e7;
+
+  --color-text-primary: #101828;
+  --color-text-secondary: #6a7282;
+  --color-text-muted: #99a1af;
+  --color-text-dark: #364153;
+  --color-text-darker: #36394a;
+  --color-text-darkest: #111827;
+  --color-text-black: #131316;
+  --color-text-slate: #272835;
+  --color-text-slate-medium: #666d80;
+
+  --color-accent: #7c5cfc;
+  --color-accent-dark: #5e4cff;
+  --color-accent-light: #f3e8ff;
+  --color-accent-muted: #faf5ff;
+  --color-accent-foreground: #ffffff;
+
+  --color-success: #10b981;
+  --color-success-alt: #00bc7d;
+  --color-success-dark: #007a55;
+  --color-success-darker: #009966;
+  --color-success-light: #d0fae5;
+  --color-success-lightest: #ecfdf5;
+  --color-success-foreground: #007a55;
+
+  --color-info: #61a8ff;
+  --color-info-dark: #155dfc;
+  --color-info-medium: #2b7fff;
+  --color-info-light: #dbeafe;
+  --color-info-lightest: #eff6ff;
+  --color-info-foreground: #155dfc;
+  --color-info-muted: #94a2c5;
+
+  --color-warning: #ff8904;
+  --color-warning-foreground: #ffffff;
+
+  --color-error: #ef4444;
+  --color-error-foreground: #ffffff;
+
+  --color-linkedin: #0a66c2;
+  --color-linkedin-light: #dce6f1;
+  --color-linkedin-foreground: #ffffff;
+
+  --color-overlay: #111827;
+  --color-overlay-dark: #131316;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+
+  --shadow-preview: 0 24px 50px -20px color-mix(in srgb, var(--color-text-primary) 28%, transparent);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+}
+
+.page-shell {
+  @apply mx-auto w-full max-w-[1440px] px-4 sm:px-6 lg:px-8;
+}
+
+.button-primary,
+.button-secondary {
+  @apply inline-flex min-h-11 items-center justify-center gap-1 rounded-md px-5 py-2 text-sm font-medium transition-colors;
+}
+
+.button-primary:focus-visible,
+.button-secondary:focus-visible {
+  @apply outline-2 outline-offset-2 outline-accent;
+}
+
+.button-primary {
+  @apply border border-text-slate bg-text-slate text-accent-foreground hover:border-text-primary hover:bg-text-primary;
+}
+
+.button-secondary {
+  @apply border border-border bg-surface text-text-primary hover:bg-surface-secondary;
+}
+
+.nav-link,
+.footer-link {
+  @apply rounded-sm text-sm font-medium text-text-dark transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent;
+}
+
+.footer-link {
+  @apply text-xs font-normal text-text-secondary;
+}
+
+.focus-ring {
+  @apply focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent;
+}
+
+.skip-link {
+  @apply sr-only z-50 rounded-md bg-text-primary px-4 py-3 text-sm text-surface focus:not-sr-only focus:absolute focus:left-4 focus:top-4;
+}
+
+.hero-gradient {
+  background:
+    radial-gradient(circle at 74% 23%, color-mix(in srgb, var(--color-info-light) 82%, transparent), transparent 36%),
+    radial-gradient(circle at 28% 30%, color-mix(in srgb, var(--color-accent-light) 74%, transparent), transparent 34%),
+    radial-gradient(circle at 67% 72%, color-mix(in srgb, var(--color-accent-light) 56%, transparent), transparent 38%),
+    var(--color-surface);
+}
+
+.section-divider {
+  @apply h-12 border-b border-border;
+  background-image: repeating-linear-gradient(
+    135deg,
+    transparent,
+    transparent 0.3rem,
+    var(--color-surface-secondary) 0.3rem,
+    var(--color-surface-secondary) 0.35rem
+  );
+}
+
+.feature-heading {
+  @apply flex min-h-56 items-center px-8 py-12 sm:px-14 lg:min-h-64 lg:px-16;
+}
+
+.feature-copy {
+  @apply relative px-8 py-7 sm:px-14 lg:px-16;
+}
+
+.feature-copy-active::before {
+  content: "";
+  @apply absolute inset-y-0 left-0 w-0.5 bg-accent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }
