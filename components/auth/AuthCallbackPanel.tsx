@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 
 import { getInsforgePublicConfig } from "@/lib/insforge-config";
 import { getInsforgeBrowserClient } from "@/lib/insforge-client";
+import { capturePostHogException, identifyPostHogUser } from "@/lib/posthog-client";
 
 type CallbackState = "loading" | "error";
 
@@ -36,15 +37,18 @@ export function AuthCallbackPanel() {
         if (error || !data.user) {
           if (error) {
             console.error("[auth/callback]", error);
+            capturePostHogException(error);
           }
 
           setState("error");
           return;
         }
 
+        identifyPostHogUser(data.user.id);
         router.replace("/dashboard");
       } catch (error: unknown) {
         console.error("[auth/callback]", error);
+        capturePostHogException(error);
 
         if (isActive) {
           setState("error");

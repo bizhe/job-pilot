@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 
 import { getInsforgePublicConfig } from "@/lib/insforge-config";
 import { getInsforgeBrowserClient } from "@/lib/insforge-client";
+import { capturePostHogException } from "@/lib/posthog-client";
 
 type OAuthProvider = "google" | "github";
 
@@ -91,12 +92,14 @@ export function AuthPanel() {
       });
 
       if (error) {
-        console.error("[auth/oauth]", error);
+        console.error("[auth/oauth]", "OAuth sign in could not start");
+        capturePostHogException(error);
         setMessage("We could not start sign in. Please try again.");
         setPendingProvider(null);
       }
     } catch (error: unknown) {
-      console.error("[auth/oauth]", error);
+      console.error("[auth/oauth]", "OAuth sign in could not start");
+      capturePostHogException(error);
       setMessage("We could not start sign in. Please try again.");
       setPendingProvider(null);
     }

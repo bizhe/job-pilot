@@ -18,12 +18,28 @@ After building any component — update this file with the component name, file 
 
 ## Components
 
+### Database Schema Feature
+
+**File:** `database/migrations/0002-database-schema.sql`
+
+- No rendered UI or component classes changed
+- No registry classes added
+
 ### Root Layout
 
 **File:** `app/layout.tsx`
 
 - Body layout: `min-h-full flex flex-col`
 - Body uses `suppressHydrationWarning` because browser extensions may inject attributes such as `jf-observer-attached` before React hydration
+- App content is wrapped in `PostHogProvider` so browser analytics initializes once at the root without making the layout a Client Component
+
+### PostHog Provider
+
+**File:** `components/analytics/PostHogProvider.tsx`
+
+- Client boundary only, no visible UI classes
+- Calls `initPostHog()` in `useEffect`
+- Returns `children` unchanged
 
 ### Homepage
 

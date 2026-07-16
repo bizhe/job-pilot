@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 
 import { getInsforgePublicConfig } from "@/lib/insforge-config";
 import { getInsforgeBrowserClient } from "@/lib/insforge-client";
+import { capturePostHogException, identifyPostHogUser } from "@/lib/posthog-client";
 
 type AuthState = "checking" | "authenticated" | "blocked";
 
@@ -43,6 +44,7 @@ export function ProtectedPage({ title, description, children }: ProtectedPagePro
         if (error || !data.user) {
           if (error) {
             console.error("[auth/protected]", error);
+            capturePostHogException(error);
           }
 
           setAuthState("blocked");
@@ -50,9 +52,11 @@ export function ProtectedPage({ title, description, children }: ProtectedPagePro
           return;
         }
 
+        identifyPostHogUser(data.user.id);
         setAuthState("authenticated");
       } catch (error: unknown) {
         console.error("[auth/protected]", error);
+        capturePostHogException(error);
 
         if (isActive) {
           setAuthState("blocked");

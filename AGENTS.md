@@ -38,6 +38,16 @@ Read in this exact order before any implementation:
 - `/remember save` — when a feature spans multiple sessions.
 - `/remember restore` — when returning after a multi-session feature.
 
+## Agent skills
+
+- [PostHog Next.js App Router](.posthog/skills/integration-nextjs-app-router/): local PostHog wizard skill, use before editing PostHog analytics code.
+- Declined: PostHog Agent Skill and MCP discovery during sync, wizard skill files were already present.
+
+## Context files
+
+- [components/analytics/AGENTS.md](components/analytics/AGENTS.md): local PostHog provider and analytics helper conventions.
+- [database/AGENTS.md](database/AGENTS.md): InsForge migration and schema verification conventions.
+
 <!-- BEGIN:insforge-agent-rules -->
 
 # InsForge SDK Documentation - Overview
