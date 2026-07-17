@@ -42,10 +42,12 @@ Read in this exact order before any implementation:
 
 - [PostHog Next.js App Router](.posthog/skills/integration-nextjs-app-router/): local PostHog wizard skill, use before editing PostHog analytics code.
 - Declined: PostHog Agent Skill and MCP discovery during sync, wizard skill files were already present.
+Tool discovery later: openai and pdf-parse were added for resume extraction; find Agent Skills and MCP servers when revisiting this integration.
 
 ## Context files
 
 - [components/analytics/AGENTS.md](components/analytics/AGENTS.md): local PostHog provider and analytics helper conventions.
+- [components/profile/AGENTS.md](components/profile/AGENTS.md): local profile page UI component conventions.
 - [database/AGENTS.md](database/AGENTS.md): InsForge migration and schema verification conventions.
 
 <!-- BEGIN:insforge-agent-rules -->

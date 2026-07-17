@@ -18,6 +18,14 @@ test.describe("auth smoke flow", () => {
   test("sends an unauthenticated dashboard visitor back to login, covers: AC-3", async ({
     page,
   }) => {
+    await page.route("**/api/auth/**", async (route) => {
+      await route.fulfill({
+        status: 401,
+        contentType: "application/json",
+        body: JSON.stringify({ error: "unauthorized" }),
+      });
+    });
+
     await page.goto("/dashboard");
 
     await expect(page).toHaveURL(/\/login/);

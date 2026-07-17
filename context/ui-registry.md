@@ -91,3 +91,33 @@ After building any component — update this file with the component name, file 
 - Protected content shell: `page-shell py-8`
 - Protected header card: `rounded-xl border border-border bg-surface p-6 shadow-preview`
 - Placeholder content card: `rounded-xl border border-border bg-surface p-6 shadow-preview`
+
+### Profile Page
+
+**File:** `app/profile/page.tsx`
+**Component:** `components/profile/ProfilePageContent.tsx`
+
+- App header: `border-b border-border bg-surface`
+- Header inner shell: `mx-auto flex min-h-16 w-full max-w-[2560px] items-center justify-between gap-4 px-5 sm:px-8 lg:px-10`
+- Header nav item: `flex min-h-16 items-center gap-2 border-b-2 border-transparent px-1 text-sm font-semibold text-text-secondary transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent sm:text-base`
+- Active profile nav item: `flex min-h-16 items-center gap-2 border-b-2 border-accent px-1 text-sm font-semibold text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent sm:text-base`
+- Page shell: `mx-auto flex w-full max-w-[1640px] flex-col gap-8 px-4 py-8 sm:px-6 lg:px-8 xl:max-w-[1640px] xl:px-0`
+- Content stack: `mx-auto flex w-full max-w-6xl flex-col gap-8`
+- Attention card: `grid gap-8 rounded-xl border border-error/20 bg-surface p-6 shadow-preview sm:p-8 lg:grid-cols-[1fr_auto] lg:items-center`
+- Resume card: `rounded-xl border border-border bg-surface p-6 shadow-preview sm:p-8`
+- Upload target: `mt-8 rounded-xl border-2 border-dashed border-border bg-surface-secondary px-6 py-12 text-center sm:py-16`
+- Resume action grid: `mt-8 grid gap-5 border-t border-border pt-6 lg:grid-cols-2`
+- Resume extraction panel: `flex flex-col gap-4 rounded-lg border border-border bg-surface-secondary p-5`
+- Resume extraction button: `inline-flex min-h-12 items-center justify-center gap-3 rounded-md bg-accent px-6 py-3 text-base font-bold text-accent-foreground shadow-preview transition-colors hover:bg-accent-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent disabled:cursor-not-allowed disabled:opacity-60`
+- Profile information card: `rounded-xl border border-border bg-surface p-6 shadow-preview sm:p-8`
+- Field grid: `grid gap-6 lg:grid-cols-2`
+- Text input: `mt-3 min-h-14 w-full rounded-md border border-border bg-surface-secondary px-4 text-base font-medium text-text-primary shadow-sm transition-colors placeholder:text-text-muted focus:border-accent focus:outline-2 focus:outline-offset-2 focus:outline-accent`
+- Select wrapper: `relative mt-3`
+- Addable input row: `mt-3 flex gap-3`
+- Skill chip: `rounded-md border border-border bg-surface-secondary px-4 py-2 text-base font-bold text-text-primary`
+- Work experience panel: `rounded-xl border border-border bg-surface-secondary p-6`
+- Primary save button: `min-h-14 w-full rounded-lg bg-accent px-6 py-4 text-base font-bold text-accent-foreground shadow-preview transition-colors hover:bg-accent-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent`
+- Profile loading card: `rounded-xl border border-border bg-surface p-6 text-center shadow-preview sm:p-8`
+- Form status message: `mt-6 rounded-md border border-border bg-surface-secondary px-4 py-3 text-sm font-semibold text-text-dark`
+- Resume upload feedback: `mt-4 text-sm font-semibold text-error`
+- Disabled action state: `disabled:cursor-not-allowed disabled:opacity-70`
